@@ -1,21 +1,25 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 
+type OperationType = "+" | "-" | "*" | "/";
 interface RowProps {
   index: number;
+  operation: OperationType;
 }
 
 export const Row = (props: RowProps) => {
-  const { index } = props;
+  const { index, operation } = props;
   const numbers = React.useRef(makeRandomNumbers());
   const [isOk, setIsOk] = React.useState(false);
 
   const onChangeInput = (e: any) => {
-    console.log(index, parseInt(e.target.value));
-    numbers.current.resultA - numbers.current.resultB ===
-    parseInt(e.target.value)
-      ? setIsOk(true)
-      : setIsOk(false);
+    const result = checkResult(
+      numbers.current.resultA,
+      numbers.current.resultB,
+      parseInt(e.target.value),
+      operation
+    );
+    setIsOk(result);
   };
 
   return (
@@ -48,4 +52,24 @@ const makeRandomNumbers = () => {
   const resultB = getRandomNumber(1, resultA);
 
   return { resultA, resultB };
+};
+
+const checkResult = (
+  a: number,
+  b: number,
+  result: number,
+  operation: OperationType
+) => {
+  console.log(a, b, result);
+
+  switch (operation) {
+    case "-":
+      return a - b === result;
+    case "+":
+      return a + b === result;
+    case "*":
+      return a * b === result;
+    case "/":
+      return a / b === result;
+  }
 };

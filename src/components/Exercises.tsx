@@ -10,7 +10,7 @@ export const Exercises = () => {
 const makeRows = (rowsNumber: number) => {
   let rows: JSX.Element[] = [];
   for (let i = 0; i < rowsNumber; i++) {
-    rows.push(<Row index={i} />);
+    rows.push(<Row index={i} operation={"-"} />);
   }
   return rows;
 };
