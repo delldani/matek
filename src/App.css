@@ -1,4 +1,10 @@
 .App {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  /* background-image: url("https://icdn.digitaltrends.com/image/digitaltrends/fortnite-outfit-ghost-rider-768x803.jpg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .numbers {
