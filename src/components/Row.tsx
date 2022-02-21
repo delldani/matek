@@ -60,8 +60,6 @@ const checkResult = (
   result: number,
   operation: OperationType
 ) => {
-  console.log(a, b, result);
-
   switch (operation) {
     case "-":
       return a - b === result;
