@@ -1,6 +1,6 @@
 import { Row } from "./Row";
 
-const ROWNUMBER = 3;
+const ROWNUMBER = 5;
 
 export const Exercises = () => {
   const rows = makeRows(ROWNUMBER);
