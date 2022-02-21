@@ -20,18 +20,20 @@ export const Row = (props: RowProps) => {
 
   return (
     <div className="row" key={index}>
-      <p>{numbers.current.resultA}</p>
-      <p>-</p>
-      <p>{numbers.current.resultB}</p>
-      <p>=</p>
-      <TextField
-        id="outlined-basic"
-        label="Eredmény"
-        variant="outlined"
-        inputProps={{ type: "number" }}
-        onChange={onChangeInput}
-      />
-      {isOk && "OK"}
+      <div className="numbers">
+        <p>{numbers.current.resultA}</p>
+        <p>-</p>
+        <p>{numbers.current.resultB}</p>
+        <p>=</p>
+        <TextField
+          id="outlined-basic"
+          label="Eredmény"
+          variant="outlined"
+          inputProps={{ type: "number" }}
+          onChange={onChangeInput}
+        />
+      </div>
+      <div className="result">{isOk && "OK"}</div>
     </div>
   );
 };
