@@ -1,6 +1,6 @@
 .App {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   place-items: center;
   background-image: url("https://cdn.vox-cdn.com/thumbor/wZ-7MngAL1awK975nXAMxAYp9Uw=/0x0:1920x1080/920x613/filters:focal(804x128:1110x434):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70383739/S8_KeyArt.0.jpg");
@@ -9,10 +9,13 @@
   background-size: cover;
   position: relative;
 }
+.rows {
+  padding: 20px;
+}
 .result {
   position: absolute;
-  top: 80px;
-  right: 80px;
+  top: 5%;
+  right: 5%;
   font-size: 100px;
   font-weight: 500;
   color: white;
