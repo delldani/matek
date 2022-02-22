@@ -12,7 +12,7 @@ export const Exercises = (props: ExercisesProps) => {
     makeRows(ROWNUMBER, onSucceed)
   );
 
-  return <div className="numbers">{rows}</div>;
+  return <div className="rows">{rows}</div>;
 };
 
 const makeRows = (

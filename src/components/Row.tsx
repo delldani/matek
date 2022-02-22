@@ -56,11 +56,13 @@ export const Row = (props: RowProps) => {
 
   return (
     <div className="row" key={index}>
-      <div className="numbers">
-        <p>{numbers.current.resultA}</p>
-        <p>-</p>
-        <p>{numbers.current.resultB}</p>
-        <p>=</p>
+      <div className="numbers-input">
+        <div className="numbers">
+          <p>{numbers.current.resultA}</p>
+          <p>-</p>
+          <p>{numbers.current.resultB}</p>
+          <p>=</p>
+        </div>
         <TextField
           className="input"
           value={value}
@@ -70,12 +72,13 @@ export const Row = (props: RowProps) => {
           inputProps={{ type: "number" }}
           onChange={onChangeInput}
           onKeyDown={onKeyDownInput}
+          disabled={isOk}
         />
         <Button sx={style(isOk)} onClick={onClickButton} disabled={isOk}>
           Mehet
         </Button>
       </div>
-      <div className="row-result">{isOk && succeedSentence.current}</div>
+      <div className="succed-sentence">{isOk && succeedSentence.current}</div>
     </div>
   );
 };
@@ -107,10 +110,14 @@ const checkResult = (
 
 const style: (isSucceed: boolean) => SxProps = (isSucceed: boolean) => {
   return {
-    backgroundColor: isSucceed ? "green" : "gray",
+    backgroundColor: "#00008ba2",
     color: "white",
     "&:hover": {
-      backgroundColor: "darkgrey",
+      backgroundColor: "DodgerBlue",
+    },
+    "&:disabled": {
+      backgroundColor: "#0e0e58a1",
+      color: "white",
     },
   };
 };

@@ -3,40 +3,50 @@
   height: 100vh;
   display: grid;
   place-items: center;
-  /* background-image: url("https://icdn.digitaltrends.com/image/digitaltrends/fortnite-outfit-ghost-rider-768x803.jpg"); */
+  background-image: url("https://cdn.vox-cdn.com/thumbor/wZ-7MngAL1awK975nXAMxAYp9Uw=/0x0:1920x1080/920x613/filters:focal(804x128:1110x434):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70383739/S8_KeyArt.0.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: relative;
 }
 .result {
   position: absolute;
   top: 80px;
   right: 80px;
-  font-size: 70px;
+  font-size: 100px;
   font-weight: 500;
+  color: white;
 }
 .numbers {
-  display: grid;
-  place-items: center;
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
 }
 .row {
   display: flex;
   font-size: 35px;
   font-weight: 500;
   align-items: center;
+  background-color: #f5deb394;
+  border-radius: 60px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
-.row .numbers {
+.row .numbers-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 350px;
+  width: 400px;
 }
-.row .row-result {
-  width: auto;
+.row .succed-sentence {
+  text-align: center;
+  width: 300px;
 }
 
 .input {
-  width: 170px;
+  width: 140px;
+}
+.input input {
+  font-weight: 600;
 }
 .row input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

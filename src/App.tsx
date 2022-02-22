@@ -6,10 +6,7 @@ function App() {
   const [result, setResult] = React.useState(0);
 
   const onSucceed = (isSucceded: boolean, index: number) => {
-    if (isSucceded) {
-      console.log(result);
-      setResult((result) => result + 1);
-    }
+    isSucceded && setResult((result) => result + 1);
   };
 
   return (
