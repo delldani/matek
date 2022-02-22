@@ -75,7 +75,7 @@ export const Row = (props: RowProps) => {
           disabled={isOk}
         />
         <Button sx={style(isOk)} onClick={onClickButton} disabled={isOk}>
-          Mehet
+          {isOk ? "Ok" : "Mehet"}
         </Button>
       </div>
       <div className="succed-sentence">{isOk && succeedSentence.current}</div>

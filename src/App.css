@@ -3,8 +3,8 @@
   height: 100vh;
   display: grid;
   place-items: center;
-  /* background-image: url("https://cdn.vox-cdn.com/thumbor/wZ-7MngAL1awK975nXAMxAYp9Uw=/0x0:1920x1080/920x613/filters:focal(804x128:1110x434):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70383739/S8_KeyArt.0.jpg"); */
-  background-image: url("https://static-assets-prod.epicgames.com/fortnite/static/webpack/8f9484f10eb14f85a189fb6117a57026.jpg");
+  background-image: url("https://cdn.vox-cdn.com/thumbor/wZ-7MngAL1awK975nXAMxAYp9Uw=/0x0:1920x1080/920x613/filters:focal(804x128:1110x434):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70383739/S8_KeyArt.0.jpg");
+  /* background-image: url("https://static-assets-prod.epicgames.com/fortnite/static/webpack/8f9484f10eb14f85a189fb6117a57026.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
