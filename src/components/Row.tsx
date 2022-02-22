@@ -24,6 +24,9 @@ interface RowProps {
 export const Row = (props: RowProps) => {
   const { index, operation, onSucceed } = props;
   const numbers = React.useRef(makeRandomNumbers());
+  const succeedSentence = React.useRef(
+    SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)]
+  );
   const [value, setValue] = React.useState("");
   const [isOk, setIsOk] = React.useState(false);
 
@@ -31,10 +34,6 @@ export const Row = (props: RowProps) => {
     setValue(e.target.value);
   };
 
-  const getSucceedSentence = React.useCallback(() => {
-    return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
-  }, [SUCCEDSENTENCES]);
-  console.log(getSucceedSentence());
   const handleResult = () => {
     const isSucceded = checkResult(
       numbers.current.resultA,
@@ -76,7 +75,7 @@ export const Row = (props: RowProps) => {
           Mehet
         </Button>
       </div>
-      <div className="row-result">{isOk && getSucceedSentence()}</div>
+      <div className="row-result">{isOk && succeedSentence.current}</div>
     </div>
   );
 };
