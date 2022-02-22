@@ -1,25 +1,34 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { SxProps } from "@mui/system";
 
 type OperationType = "+" | "-" | "*" | "/";
 interface RowProps {
   index: number;
   operation: OperationType;
+  onSucceed: (isSucceded: boolean, index: number) => void;
 }
 
 export const Row = (props: RowProps) => {
-  const { index, operation } = props;
+  const { index, operation, onSucceed } = props;
   const numbers = React.useRef(makeRandomNumbers());
+  const [value, setValue] = React.useState("");
   const [isOk, setIsOk] = React.useState(false);
 
   const onChangeInput = (e: any) => {
-    const result = checkResult(
+    setValue(e.target.value);
+  };
+
+  const onClickButton = () => {
+    const isSucceded = checkResult(
       numbers.current.resultA,
       numbers.current.resultB,
-      parseInt(e.target.value),
+      parseInt(value),
       operation
     );
-    setIsOk(result);
+    setIsOk(isSucceded);
+    onSucceed(isSucceded, index);
   };
 
   return (
@@ -30,14 +39,19 @@ export const Row = (props: RowProps) => {
         <p>{numbers.current.resultB}</p>
         <p>=</p>
         <TextField
+          className="input"
+          value={value}
           id="outlined-basic"
           label="Eredmény"
           variant="outlined"
           inputProps={{ type: "number" }}
           onChange={onChangeInput}
         />
+        <Button sx={style} onClick={onClickButton} disabled={isOk}>
+          Mehet
+        </Button>
       </div>
-      <div className="result">{isOk && "OK"}</div>
+      <div className="row-result">{isOk && "OK"}</div>
     </div>
   );
 };
@@ -70,4 +84,13 @@ const checkResult = (
     case "/":
       return a / b === result;
   }
+};
+
+const style: SxProps = {
+  backgroundColor: "green",
+  color: "white",
+  "&:hover": {
+    backgroundColor: "ForestGreen",
+    color: "white",
+  },
 };
