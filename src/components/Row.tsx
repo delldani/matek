@@ -20,7 +20,7 @@ export const Row = (props: RowProps) => {
     setValue(e.target.value);
   };
 
-  const onClickButton = () => {
+  const handleResult = () => {
     const isSucceded = checkResult(
       numbers.current.resultA,
       numbers.current.resultB,
@@ -29,6 +29,15 @@ export const Row = (props: RowProps) => {
     );
     setIsOk(isSucceded);
     onSucceed(isSucceded, index);
+  };
+
+  const onClickButton = () => {
+    handleResult();
+  };
+  const onKeyDownInput = (e: React.KeyboardEvent<HTMLImageElement>) => {
+    if (e.key === "Enter") {
+      handleResult();
+    }
   };
 
   return (
@@ -46,8 +55,9 @@ export const Row = (props: RowProps) => {
           variant="outlined"
           inputProps={{ type: "number" }}
           onChange={onChangeInput}
+          onKeyDown={onKeyDownInput}
         />
-        <Button sx={style} onClick={onClickButton} disabled={isOk}>
+        <Button sx={style(isOk)} onClick={onClickButton} disabled={isOk}>
           Mehet
         </Button>
       </div>
@@ -86,11 +96,12 @@ const checkResult = (
   }
 };
 
-const style: SxProps = {
-  backgroundColor: "green",
-  color: "white",
-  "&:hover": {
-    backgroundColor: "ForestGreen",
+const style: (isSucceed: boolean) => SxProps = (isSucceed: boolean) => {
+  return {
+    backgroundColor: isSucceed ? "green" : "gray",
     color: "white",
-  },
+    "&:hover": {
+      backgroundColor: "darkgrey",
+    },
+  };
 };
