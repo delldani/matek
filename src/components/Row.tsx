@@ -3,6 +3,17 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
 
+import { getRandomNumber } from "./utils";
+
+const SUCCEDSENTENCES = [
+  "ÜGYES VOLTÁL",
+  "ÜGYES VAGY ÁRON",
+  "NAGYSZERŰ",
+  "TE VAGY A KIRÁLY",
+  "ÁRON A KIRÁLY",
+  "BÜSZKE LEHETSZ MAGADRA",
+];
+
 type OperationType = "+" | "-" | "*" | "/";
 interface RowProps {
   index: number;
@@ -20,6 +31,10 @@ export const Row = (props: RowProps) => {
     setValue(e.target.value);
   };
 
+  const getSucceedSentence = React.useCallback(() => {
+    return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
+  }, [SUCCEDSENTENCES]);
+  console.log(getSucceedSentence());
   const handleResult = () => {
     const isSucceded = checkResult(
       numbers.current.resultA,
@@ -61,14 +76,9 @@ export const Row = (props: RowProps) => {
           Mehet
         </Button>
       </div>
-      <div className="row-result">{isOk && "OK"}</div>
+      <div className="row-result">{isOk && getSucceedSentence()}</div>
     </div>
   );
-};
-
-const getRandomNumber = (min: number, max: number) => {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const makeRandomNumbers = () => {

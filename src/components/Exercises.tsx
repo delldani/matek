@@ -1,3 +1,4 @@
+import React from "react";
 import { Row } from "./Row";
 
 const ROWNUMBER = 5;
@@ -7,7 +8,10 @@ interface ExercisesProps {
 }
 export const Exercises = (props: ExercisesProps) => {
   const { onSucceed } = props;
-  const rows = makeRows(ROWNUMBER, onSucceed);
+  const [rows, setRows] = React.useState<JSX.Element[]>(
+    makeRows(ROWNUMBER, onSucceed)
+  );
+
   return <div className="numbers">{rows}</div>;
 };
 

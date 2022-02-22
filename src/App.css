@@ -32,7 +32,7 @@
   width: 350px;
 }
 .row .row-result {
-  width: 50px;
+  width: auto;
 }
 
 .input {
