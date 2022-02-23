@@ -22,21 +22,26 @@ interface RowProps {
 
 export const Row = (props: RowProps) => {
   const { index, operation, onSucceed } = props;
-  const numbers = React.useRef(makeRandomNumbers());
+  // const numbers = React.useRef(makeRandomNumbers(operation));
+  const [numbers, setNumbers] = React.useState(makeRandomNumbers(operation));
   const succeedSentence = React.useRef(
     SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)]
   );
   const [value, setValue] = React.useState("");
   const [isOk, setIsOk] = React.useState(false);
-
+  React.useEffect(() => {
+    setValue("");
+    setIsOk(false);
+    setNumbers(makeRandomNumbers(operation));
+  }, [operation]);
   const onChangeInput = (e: any) => {
     setValue(e.target.value);
   };
 
   const handleResult = () => {
     const isSucceded = checkResult(
-      numbers.current.resultA,
-      numbers.current.resultB,
+      numbers.resultA,
+      numbers.resultB,
       parseInt(value),
       operation
     );
@@ -57,9 +62,9 @@ export const Row = (props: RowProps) => {
     <div className="row" key={index}>
       <div className="numbers-input">
         <div className="numbers">
-          <p>{numbers.current.resultA}</p>
+          <p>{numbers.resultA}</p>
           <p>{operation}</p>
-          <p>{numbers.current.resultB}</p>
+          <p>{numbers.resultB}</p>
           <p>=</p>
         </div>
         <TextField
@@ -82,10 +87,15 @@ export const Row = (props: RowProps) => {
   );
 };
 
-const makeRandomNumbers = () => {
+const makeRandomNumbers = (operation: OperationType) => {
   const resultA = getRandomNumber(1, 100);
-  const resultB = getRandomNumber(1, resultA);
-
+  let resultB: number;
+  if (operation === "-") {
+    resultB = getRandomNumber(1, resultA);
+  } else {
+    resultB = getRandomNumber(1, 100 - resultA);
+  }
+  console.log(resultA, resultB);
   return { resultA, resultB };
 };
 

@@ -29,7 +29,7 @@ const makeRows = (
   let rows: JSX.Element[] = [];
   for (let i = 0; i < rowsNumber; i++) {
     rows.push(
-      <div key={getRandomNumber(0, 10000)}>
+      <div>
         <Row index={i} operation={operationType} onSucceed={onSucceed} />
       </div>
     );
