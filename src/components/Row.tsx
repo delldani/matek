@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
 
 import { getRandomNumber } from "./utils";
+import { OperationType } from "./type";
 
 const SUCCEDSENTENCES = [
   "ÜGYES VOLTÁL",
@@ -13,8 +14,6 @@ const SUCCEDSENTENCES = [
   "ÁRON A KIRÁLY",
   "BÜSZKE LEHETSZ MAGADRA",
 ];
-
-type OperationType = "+" | "-" | "*" | "/";
 interface RowProps {
   index: number;
   operation: OperationType;
@@ -59,7 +58,7 @@ export const Row = (props: RowProps) => {
       <div className="numbers-input">
         <div className="numbers">
           <p>{numbers.current.resultA}</p>
-          <p>-</p>
+          <p>{operation}</p>
           <p>{numbers.current.resultB}</p>
           <p>=</p>
         </div>
