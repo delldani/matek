@@ -1,7 +1,11 @@
-export const getRandomNumber = (min: number, max: number) => {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+const SUCCEDSENTENCES = [
+  "ÜGYES VOLTÁL",
+  "ÜGYES VAGY ÁRON",
+  "NAGYSZERŰ",
+  "TE VAGY A KIRÁLY",
+  "ÁRON A KIRÁLY",
+  "BÜSZKE LEHETSZ MAGADRA",
+];
 
 const bgPictures = [
   "https://cdn.vox-cdn.com/thumbor/wZ-7MngAL1awK975nXAMxAYp9Uw=/0x0:1920x1080/920x613/filters:focal(804x128:1110x434):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70383739/S8_KeyArt.0.jpg",
@@ -14,6 +18,15 @@ const bgPictures = [
   "https://m.gamekapocs.hu/media/galeria/jatek/6/6207/13261/231197_orig_FortniteSeasonTwoExpansion.jpg",
 ];
 
+export const getRandomNumber = (min: number, max: number) => {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
 export const getRandomBgPicture = () => {
   return bgPictures[getRandomNumber(0, bgPictures.length - 1)];
+};
+
+export const getSucceedSentence = () => {
+  return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
 };

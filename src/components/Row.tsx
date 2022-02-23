@@ -3,17 +3,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
 
-import { getRandomNumber } from "./utils";
+import { getRandomNumber, getSucceedSentence } from "./utils";
 import { OperationType } from "./type";
 
-const SUCCEDSENTENCES = [
-  "ÜGYES VOLTÁL",
-  "ÜGYES VAGY ÁRON",
-  "NAGYSZERŰ",
-  "TE VAGY A KIRÁLY",
-  "ÁRON A KIRÁLY",
-  "BÜSZKE LEHETSZ MAGADRA",
-];
 interface RowProps {
   index: number;
   operation: OperationType;
@@ -22,13 +14,12 @@ interface RowProps {
 
 export const Row = (props: RowProps) => {
   const { index, operation, onSucceed } = props;
-  // const numbers = React.useRef(makeRandomNumbers(operation));
   const [numbers, setNumbers] = React.useState(makeRandomNumbers(operation));
-  const succeedSentence = React.useRef(
-    SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)]
-  );
   const [value, setValue] = React.useState("");
   const [isOk, setIsOk] = React.useState(false);
+
+  const succeedSentence = React.useRef(getSucceedSentence());
+
   React.useEffect(() => {
     setValue("");
     setIsOk(false);
