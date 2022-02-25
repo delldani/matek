@@ -48,6 +48,21 @@ function App() {
       >
         Kivonás
       </div>
+      <div
+        className={clsx(
+          "multiple",
+          operationType === "*" && "active-operation"
+        )}
+        onClick={() => onClickOperation("*")}
+      >
+        szorzás
+      </div>
+      <div
+        className={clsx("divide", operationType === "/" && "active-operation")}
+        onClick={() => onClickOperation("/")}
+      >
+        osztás
+      </div>
     </div>
   );
 }

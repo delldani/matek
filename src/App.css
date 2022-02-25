@@ -20,7 +20,9 @@
 }
 
 .addition,
-.substraction {
+.substraction,
+.multiple,
+.divide {
   position: absolute;
   display: grid;
   place-items: center;
@@ -36,7 +38,9 @@
   cursor: pointer;
 }
 .addition:hover,
-.substraction:hover {
+.substraction:hover,
+.multiple:hover,
+.divide:hover {
   color: red;
 }
 .addition {
@@ -44,6 +48,12 @@
 }
 .substraction {
   top: 30%;
+}
+.multiple {
+  top: 40%;
+}
+.divide {
+  top: 50%;
 }
 .active-operation {
   color: red;

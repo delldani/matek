@@ -30,3 +30,13 @@ export const getRandomBgPicture = () => {
 export const getSucceedSentence = () => {
   return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
 };
+
+export const getDivideRandomNumber = () => {
+  let a = 0;
+  let b = 0;
+  do {
+    a = getRandomNumber(6, 15);
+    b = getRandomNumber(2, a / 2);
+  } while (a % b !== 0);
+  return { a, b };
+};

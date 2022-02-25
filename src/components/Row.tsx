@@ -3,7 +3,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
 
-import { getRandomNumber, getSucceedSentence } from "./utils";
+import {
+  getRandomNumber,
+  getSucceedSentence,
+  getDivideRandomNumber,
+} from "./utils";
 import { OperationType } from "./type";
 
 interface RowProps {
@@ -79,14 +83,22 @@ export const Row = (props: RowProps) => {
 };
 
 const makeRandomNumbers = (operation: OperationType) => {
-  const resultA = getRandomNumber(1, 100);
-  let resultB: number;
+  let resultA: number = 0;
+  let resultB: number = 0;
   if (operation === "-") {
+    resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, resultA);
-  } else {
+  } else if (operation === "+") {
+    resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, 100 - resultA);
+  } else if (operation === "*") {
+    resultA = getRandomNumber(1, 5);
+    resultB = getRandomNumber(1, 5);
+  } else if (operation === "/") {
+    const { a, b } = getDivideRandomNumber();
+    resultA = a;
+    resultB = b;
   }
-  console.log(resultA, resultB);
   return { resultA, resultB };
 };
 
