@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { getRandomBgPicture } from "./components/utils";
 import { Exercises } from "./components/Exercises";
 import { OperationType } from "./components/type";
+import { getResult } from "./components/utils";
 
 function App() {
   const [result, setResult] = React.useState(0);
@@ -19,7 +20,7 @@ function App() {
   }, []);
 
   const onSucceed = (isSucceded: boolean, index: number) => {
-    isSucceded && setResult((result) => result + 1);
+    isSucceded && setResult((result) => getResult(result, operationType));
   };
 
   const onClickOperation = (operation: OperationType) => {

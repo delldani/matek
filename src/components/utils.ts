@@ -1,3 +1,5 @@
+import { OperationType } from "./type";
+
 const SUCCEDSENTENCES = [
   "ÜGYES VOLTÁL",
   "ÜGYES VAGY ÁRON",
@@ -17,6 +19,15 @@ const bgPictures = [
   "https://cdn2.unrealengine.com/13br-evergreens-blue-newsheader-1920x1080-685060491.jpg",
   "https://m.gamekapocs.hu/media/galeria/jatek/6/6207/13261/231197_orig_FortniteSeasonTwoExpansion.jpg",
 ];
+const resultsAddings = {
+  "+": 1,
+  "-": 2,
+  "*": 3,
+  "/": 3,
+};
+export const getResult = (result: number, operationType: OperationType) => {
+  return result + resultsAddings[operationType];
+};
 
 export const getRandomNumber = (min: number, max: number) => {
   // min and max included

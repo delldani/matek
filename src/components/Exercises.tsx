@@ -1,10 +1,8 @@
 import React from "react";
 import { Row } from "./Row";
 import { OperationType } from "./type";
-import { getRandomNumber } from "./utils";
 
 const ROWNUMBER = 5;
-
 interface ExercisesProps {
   onSucceed: (isSucceded: boolean, index: number) => void;
   operationType: OperationType;
