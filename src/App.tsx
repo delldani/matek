@@ -30,8 +30,12 @@ function App() {
   return (
     <div ref={refApp} className="App">
       <Exercises onSucceed={onSucceed} operationType={operationType} />
-      <div className="result">{result}</div>
-      <div
+      <div className="result-wrapper">
+          <div className="result">{result}</div>
+      
+            <img className='v-buck' src="/pngfind.com-vbucks-png-4688626.png" alt="vbuck" />
+      </div>
+      <div        
         className={clsx(
           "addition",
           operationType === "+" && "active-operation"

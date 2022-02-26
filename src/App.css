@@ -10,13 +10,21 @@
 .rows {
   padding: 20px;
 }
-.result {
+.result-wrapper{
+  display: flex;
+  justify-content: center;
   position: absolute;
   top: 5%;
   right: 5%;
+}
+.result {
   font-size: 100px;
   font-weight: 500;
   color: white;
+}
+.v-buck{
+margin-left: 50px;
+width: 120px;
 }
 
 .addition,
@@ -44,16 +52,16 @@
   color: red;
 }
 .addition {
-  top: 20%;
-}
-.substraction {
   top: 30%;
 }
-.multiple {
+.substraction {
   top: 40%;
 }
-.divide {
+.multiple {
   top: 50%;
+}
+.divide {
+  top: 60%;
 }
 .active-operation {
   color: red;
