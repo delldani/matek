@@ -1,5 +1,5 @@
 import { OperationType } from "./type";
-import { SUCCEDSENTENCES,bgPictures,resultsAddings} from './defaults'
+import { SUCCEDSENTENCES, bgPictures, resultsAddings } from "./defaults";
 
 export const getResult = (result: number, operationType: OperationType) => {
   return result + resultsAddings[operationType];
@@ -27,7 +27,6 @@ export const getDivideRandomNumber = () => {
   } while (a % b !== 0);
   return { a, b };
 };
-
 
 export const makeRandomNumbers = (operation: OperationType) => {
   let resultA: number = 0;
@@ -65,4 +64,12 @@ export const checkResult = (
     case "/":
       return a / b === result;
   }
+};
+export const getTodayDate = () => {
+  const date = new Date();
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+    day: date.getDate(),
+  };
 };
