@@ -1,5 +1,5 @@
 export const sendData = (date: string, score: number) => {
-  fetch("http://localhost:5000/", {
+  fetch("http://matekapi.herokuapp.com", {
     method: "POST",
     headers: {
       Accept: "application/json",
