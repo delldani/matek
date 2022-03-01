@@ -71,5 +71,7 @@ export const getTodayDate = () => {
     year: date.getFullYear(),
     month: date.getMonth(),
     day: date.getDate(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
   };
 };

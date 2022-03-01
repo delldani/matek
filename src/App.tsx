@@ -10,20 +10,33 @@ import { sendData } from "./components/apiConnection";
 
 function App() {
   const [result, setResult] = React.useState(0);
+  const refResult = React.useRef(0);
   const refApp = React.useRef<HTMLDivElement>(null);
   const [operationType, setOperationType] = React.useState<OperationType>("-");
 
+  const handleData = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = "";
+    const { year, month, day, hour, minute } = getTodayDate();
+    sendData(`${year}-${month}-${day}-${hour}-${minute}`, refResult.current);
+  };
+
   React.useEffect(() => {
+    window.addEventListener("beforeunload", (e) => handleData(e));
     if (refApp.current) {
       refApp.current.style.backgroundImage = `url('${getRandomBgPicture()}')`;
     }
+    return () => {
+      window.removeEventListener("beforeunload", handleData);
+    };
   }, []);
+
   React.useEffect(() => {
     if (result !== 0) {
-      const { year, month, day } = getTodayDate();
-      sendData(`${year}-${month}-${day}`, result);
+      refResult.current = result;
     }
   }, [result]);
+
   const onSucceed = (isSucceded: boolean, index: number) => {
     isSucceded && setResult((result) => getResult(result, operationType));
   };
