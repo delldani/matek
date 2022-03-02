@@ -20,7 +20,7 @@ function App() {
     e.returnValue = "";
     const { year, month, day, hour, minute } = getTodayDate();
     sendData(
-      `${year}-${month}-${day}-${hour}-${minute}`,
+      `${year}-${month + 1}-${day}-${hour}-${minute}`,
       refResult.current,
       refFailure.current
     );
