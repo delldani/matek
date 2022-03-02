@@ -42,13 +42,14 @@ function App() {
     if (isSucceded) {
       setResult((result) => getResult(result, operationType));
       refResult.current = getResult(refResult.current, operationType);
+    } else {
+      refFailure.current += 1;
     }
   };
 
   const onClickOperation = (operation: OperationType) => {
     setOperationType(operation);
   };
-
   return (
     <div ref={refApp} className="App">
       <Exercises onSucceed={onSucceed} operationType={operationType} />
