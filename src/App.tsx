@@ -6,11 +6,12 @@ import { getRandomBgPicture } from "./components/utils";
 import { Exercises } from "./components/Exercises";
 import { OperationType } from "./components/type";
 import { getResult, getTodayDate } from "./components/utils";
-import { sendData } from "./components/apiConnection";
+import { sendData, getLatestScores } from "./components/apiConnection";
 
 function App() {
   const [result, setResult] = React.useState(0);
   const refResult = React.useRef(0);
+  const refFailure = React.useRef(0);
   const refApp = React.useRef<HTMLDivElement>(null);
   const [operationType, setOperationType] = React.useState<OperationType>("-");
 
@@ -18,10 +19,16 @@ function App() {
     e.preventDefault();
     e.returnValue = "";
     const { year, month, day, hour, minute } = getTodayDate();
-    sendData(`${year}-${month}-${day}-${hour}-${minute}`, refResult.current);
+    sendData(
+      `${year}-${month}-${day}-${hour}-${minute}`,
+      refResult.current,
+      refFailure.current
+    );
   };
 
   React.useEffect(() => {
+    getLatestScores().then((result) => setResult(result.score));
+
     window.addEventListener("beforeunload", (e) => handleData(e));
     if (refApp.current) {
       refApp.current.style.backgroundImage = `url('${getRandomBgPicture()}')`;
@@ -31,14 +38,11 @@ function App() {
     };
   }, []);
 
-  React.useEffect(() => {
-    if (result !== 0) {
-      refResult.current = result;
-    }
-  }, [result]);
-
   const onSucceed = (isSucceded: boolean, index: number) => {
-    isSucceded && setResult((result) => getResult(result, operationType));
+    if (isSucceded) {
+      setResult((result) => getResult(result, operationType));
+      refResult.current = getResult(refResult.current, operationType);
+    }
   };
 
   const onClickOperation = (operation: OperationType) => {
