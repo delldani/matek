@@ -10,9 +10,10 @@
 .rows {
   padding: 20px;
 }
-.result-wrapper{
+.result-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: absolute;
   top: 5%;
   right: 5%;
@@ -22,9 +23,10 @@
   font-weight: 500;
   color: white;
 }
-.v-buck{
-margin-left: 50px;
-width: 120px;
+.v-buck {
+  margin-left: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 .addition,
