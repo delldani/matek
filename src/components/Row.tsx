@@ -3,11 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
 
-import {
-  getSucceedSentence,
-  makeRandomNumbers,
-  checkResult
-} from "./utils";
+import { getSucceedSentence, makeRandomNumbers, checkResult } from "./utils";
 import { OperationType } from "./type";
 
 interface RowProps {

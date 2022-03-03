@@ -24,12 +24,14 @@ function App() {
       refResult.current,
       refFailure.current
     );
+    refResult.current = 0;
+    refFailure.current = 0;
   };
 
   React.useEffect(() => {
     getLatestScores().then((result) => setResult(result.score));
 
-    window.addEventListener("beforeunload", (e) => handleData(e));
+    window.addEventListener("beforeunload", handleData);
     if (refApp.current) {
       refApp.current.style.backgroundImage = `url('${getRandomBgPicture()}')`;
     }
