@@ -4,6 +4,7 @@ import {
   bgPictures,
   resultsAddings,
   poolForDivide,
+  poolConversion
 } from "./defaults";
 
 export const getResult = (result: number, operationType: OperationType) => {
@@ -38,6 +39,10 @@ export const getRandomDivideNumberFromPool = () => {
   return poolForDivide[getRandomNumber(0, poolForDivide.length - 1)];
 };
 
+export const getRandomConversionFromPool = () => {
+  return poolConversion[getRandomNumber(0, poolConversion.length - 1)];
+};
+
 const getMultipleTable = (number: number) => {
   let table: { a: number; b: number }[] = [];
   for (let i = 1; i < 11; i++) {
@@ -55,8 +60,11 @@ export const getRandomMultipleNumber = (tables: number[] = [2, 3]) => {
 };
 
 export const makeRandomNumbers = (operation: OperationType) => {
-  let resultA: number = 0;
+  let resultA: number  = 0;
   let resultB: number = 0;
+  let conersionFirst:string = '';
+  let conersionSecond:string='';
+  let conersionSolvation= '';
   if (operation === "-") {
     resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, resultA);
@@ -72,14 +80,20 @@ export const makeRandomNumbers = (operation: OperationType) => {
     resultA = a;
     resultB = b;
   }
-  return { resultA, resultB };
+  else if (operation === "conversion") {
+    const { first,second,solvation} = getRandomConversionFromPool();
+    conersionFirst = first;
+    conersionSecond = second;
+    conersionSolvation= solvation;
+  }
+  return { resultA, resultB,conersionFirst,conersionSecond,conersionSolvation };
 };
 
 export const checkResult = (
-  a: number,
+  a: number ,
   b: number,
   result: number,
-  operation: OperationType
+  operation:"+" | "-" | "*" | "/" ,
 ) => {
   switch (operation) {
     case "-":

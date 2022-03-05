@@ -1,3 +1,4 @@
+
 export const SUCCEDSENTENCES = [
   "ÜGYES VOLTÁL",
   "ÜGYES VAGY ÁRON",
@@ -23,6 +24,7 @@ export const resultsAddings = {
   "-": 3,
   "*": 4,
   "/": 4,
+  "conversion":4,
 };
 
 export const poolForDivide = [
@@ -43,3 +45,16 @@ export const poolForDivide = [
   { a: 16, b: 2 },
   { a: 16, b: 4 },
 ];
+
+export const poolConversion = [
+  {first:'10 dm', second:'10 cm', solvation:'>'},
+  {first:'10 dm', second:'100 cm', solvation:'='},
+  {first:'100 cm', second:'10 dm', solvation:'='},
+  {first:'3 dm', second:'41 cm', solvation:'<'},
+  {first:'4 dm és 1 cm', second:'50 cm', solvation:'<'},
+  {first:'45 cm', second:'5 dm', solvation:'<'},
+  {first:'33 cm', second:'3 dm', solvation:'>'},
+  {first:'100 cm', second:'9 dm és 10 cm', solvation:'<'},
+  {first:'2 dm és 2 cm', second:'3 dm', solvation:'<'},
+  {first:'70 cm', second:'7 dm', solvation:'='},
+]

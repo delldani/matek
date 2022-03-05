@@ -91,13 +91,19 @@ function App() {
         )}
         onClick={() => onClickOperation("*")}
       >
-        szorzás
+        Szorzás
       </div>
       <div
         className={clsx("divide", operationType === "/" && "active-operation")}
         onClick={() => onClickOperation("/")}
       >
-        osztás
+        Osztás
+      </div>
+      <div
+        className={clsx("conversion", operationType === "conversion" && "active-operation")}
+        onClick={() => onClickOperation("conversion")}
+      >
+        Átváltás
       </div>
     </div>
   );
