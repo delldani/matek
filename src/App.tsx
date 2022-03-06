@@ -16,16 +16,16 @@ function App() {
   const [operationType, setOperationType] = React.useState<OperationType>("-");
 
   const handleData = (e: BeforeUnloadEvent) => {
-    e.preventDefault();
-    e.returnValue = "";
-    const { year, month, day, hour, minute } = getTodayDate();
-    sendData(
-      `${year}-${month + 1}-${day}-${hour}-${minute}`,
-      refResult.current,
-      refFailure.current
-    );
-    refResult.current = 0;
-    refFailure.current = 0;
+    // e.preventDefault();
+    // e.returnValue = "";
+    // const { year, month, day, hour, minute } = getTodayDate();
+    // sendData(
+    //   `${year}-${month + 1}-${day}-${hour}-${minute}`,
+    //   refResult.current,
+    //   refFailure.current
+    // );
+    // refResult.current = 0;
+    // refFailure.current = 0;
   };
 
   React.useEffect(() => {

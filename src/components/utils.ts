@@ -23,17 +23,17 @@ export const getSucceedSentence = () => {
   return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
 };
 
-export const getDivideRandomNumber = (fromPool: boolean = true) => {
+export const getDivideRandomNumber = (fromPool: boolean = false,tables:number[]=[2]) => {
   if (fromPool) {
     return getRandomDivideNumberFromPool();
   }
-  let a = 0;
-  let b = 0;
-  do {
-    a = getRandomNumber(6, 15);
-    b = getRandomNumber(2, a / 2);
-  } while (a % b !== 0);
-  return { a, b };
+  const newTable:{a:number,b:number}[] = [];
+  tables.forEach((item)=>{
+    getMultipleTable(item).forEach((multipleItem)=>{
+      newTable.push({a:multipleItem.a * multipleItem.b,b:item })
+    });
+  })
+  return newTable[getRandomNumber(0,newTable.length-1)];
 };
 export const getRandomDivideNumberFromPool = () => {
   return poolForDivide[getRandomNumber(0, poolForDivide.length - 1)];
@@ -45,8 +45,8 @@ export const getRandomConversionFromPool = () => {
 
 const getMultipleTable = (number: number) => {
   let table: { a: number; b: number }[] = [];
-  for (let i = 1; i < 11; i++) {
-    table.push({ a: i, b: number });
+  for (let i = 2; i < 11; i++) {
+    table.push({ a: number, b: i });
   }
   return table;
 };
@@ -72,11 +72,11 @@ export const makeRandomNumbers = (operation: OperationType) => {
     resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, 100 - resultA);
   } else if (operation === "*") {
-    const { a, b } = getRandomMultipleNumber([2]);
+    const { a, b } = getRandomMultipleNumber([2,3,4,5]);
     resultA = a;
     resultB = b;
   } else if (operation === "/") {
-    const { a, b } = getDivideRandomNumber(true);
+    const { a, b } = getDivideRandomNumber(false,[2,3]);
     resultA = a;
     resultB = b;
   }
