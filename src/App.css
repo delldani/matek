@@ -42,7 +42,7 @@
 .addition,
 .substraction,
 .multiple,
-.divide, .conversion {
+.divide, .conversion, .operations {
   position: absolute;
   display: grid;
   place-items: center;
@@ -61,7 +61,8 @@
 .substraction:hover,
 .multiple:hover,
 .divide:hover,
-.conversion:hover {
+.conversion:hover,
+.operations:hover {
   color: red;
 }
 .addition {
@@ -78,6 +79,9 @@
 }
 .conversion{
   top: 70%;
+}
+.operations{
+  top: 80%;
 }
 .active-operation {
   color: red;
@@ -111,6 +115,7 @@
   align-items: center;
   width: 400px;
 }
+
 .row .succed-sentence {
   text-align: center;
   width: 300px;

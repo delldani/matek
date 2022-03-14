@@ -25,6 +25,7 @@ export const resultsAddings = {
   "*": 4,
   "/": 4,
   "conversion":4,
+  'operations':4,
 };
 
 export const poolForDivide = [
@@ -54,7 +55,23 @@ export const poolConversion = [
   {first:'4 dm és 1 cm', second:'50 cm', solvation:'<'},
   {first:'45 cm', second:'5 dm', solvation:'<'},
   {first:'33 cm', second:'3 dm', solvation:'>'},
-  {first:'100 cm', second:'9 dm és 10 cm', solvation:'<'},
+  {first:'100 cm', second:'9 dm és 10 cm', solvation:'='},
   {first:'2 dm és 2 cm', second:'3 dm', solvation:'<'},
   {first:'70 cm', second:'7 dm', solvation:'='},
+]
+
+export const poolForMultipleOperations =[
+  {numbers: '10 * 4 - 5', results: '35'},
+  {numbers: '2 * 3 + 18', results: '24'},
+  {numbers: '5 * 5 - 14', results: '11'},
+  {numbers: '14 / 7 + 98', results: '100'},
+  {numbers: '16 / 4 + 42', results: '46'},
+  {numbers: '73 - 6 * 5', results: '43'},
+  {numbers: '82 - 8 * 5', results: '42'},
+  {numbers: '20 + 4 * 5', results: '40'},
+  {numbers: '2 * 3 + 18', results: '24'},
+  {numbers: '21 / 7 + 18', results: '21'},
+  {numbers: '57 - 21 / 7', results: '54'},
+  {numbers: '40 + 8 * 4', results: '72'},
+  {numbers: '57 + 36 / 4', results: '66'},
 ]

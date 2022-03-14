@@ -4,7 +4,8 @@ import {
   bgPictures,
   resultsAddings,
   poolForDivide,
-  poolConversion
+  poolConversion,
+  poolForMultipleOperations,
 } from "./defaults";
 
 export const getResult = (result: number, operationType: OperationType) => {
@@ -58,13 +59,21 @@ export const getRandomMultipleNumber = (tables: number[] = [2, 3]) => {
   });
   return allTables[getRandomNumber(0, allTables.length - 1)];
 };
+export const getRandomNumberForMultipleOperations = ()=>{
+  return  poolForMultipleOperations[getRandomNumber(0,poolForMultipleOperations.length-1)];
+};
 
 export const makeRandomNumbers = (operation: OperationType) => {
+
   let resultA: number  = 0;
   let resultB: number = 0;
-  let conersionFirst:string = '';
-  let conersionSecond:string='';
-  let conersionSolvation= '';
+  let resultC: number = 0;
+  let conversionFirst:string = '';
+  let conversionSecond:string='';
+  let conversionSolvation= '';
+  let operationsNumbers = '';
+  let operationsResults = '';
+
   if (operation === "-") {
     resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, resultA);
@@ -76,17 +85,21 @@ export const makeRandomNumbers = (operation: OperationType) => {
     resultA = a;
     resultB = b;
   } else if (operation === "/") {
-    const { a, b } = getDivideRandomNumber(false,[2,3]);
+    const { a, b } = getDivideRandomNumber(false,[2,3,4,5]);
     resultA = a;
     resultB = b;
   }
   else if (operation === "conversion") {
     const { first,second,solvation} = getRandomConversionFromPool();
-    conersionFirst = first;
-    conersionSecond = second;
-    conersionSolvation= solvation;
+    conversionFirst = first;
+    conversionSecond = second;
+    conversionSolvation= solvation;
+  } else if (operation === "operations") {
+    const { numbers,results} = getRandomNumberForMultipleOperations();
+    operationsNumbers = numbers;
+    operationsResults = results;
   }
-  return { resultA, resultB,conersionFirst,conersionSecond,conersionSolvation };
+  return { resultA, resultB,resultC,conversionFirst,conversionSecond,conversionSolvation,operationsNumbers,operationsResults };
 };
 
 export const checkResult = (

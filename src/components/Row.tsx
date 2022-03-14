@@ -1,6 +1,7 @@
 import { OperationType } from "./type";
 import { OperationRow} from './OperationRow';
 import {ConversionRow } from './ConversionRow'
+import { MultipleOperationsRow} from './MultipleOperationsRow'
 
 interface RowProps {
   index: number;
@@ -13,6 +14,8 @@ export const Row = (props: RowProps) => {
 
   if(operation === 'conversion'){
     return(<ConversionRow index={index} onSucceed={onSucceed} operation={operation}/>)
+  }else if(operation === 'operations'){
+    return(<MultipleOperationsRow index={index} onSucceed={onSucceed} />)
   }else{
     return (<OperationRow index={index} onSucceed={onSucceed} operation={operation}/>);
     }

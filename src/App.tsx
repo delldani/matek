@@ -105,6 +105,12 @@ function App() {
       >
         Átváltás
       </div>
+      <div
+        className={clsx("operations", operationType === "operations" && "active-operation")}
+        onClick={() => onClickOperation("operations")}
+      >
+        Műveleti sorrend
+      </div>
     </div>
   );
 }

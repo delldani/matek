@@ -26,7 +26,7 @@ export const ConversionRow = (props: ConversionRowProps) => {
 
   
   const handleResult = () => {
-    const isSucceded = value === numbers.conersionSolvation
+    const isSucceded = value === numbers.conversionSolvation
     setIsOk(isSucceded);
     onSucceed(isSucceded, index);
   };
@@ -47,7 +47,7 @@ const onChangeInput = (e: any) => {
   return (
     <div className="row" key={index}>
         <div className="conversion-question">
-            <p>{numbers.conersionFirst}</p>
+            <p>{numbers.conversionFirst}</p>
             <TextField
             className="conversion-input"
             value={value}
@@ -57,7 +57,7 @@ const onChangeInput = (e: any) => {
             onKeyDown={onKeyDownInput}
             disabled={isOk}
             />
-            <p>{numbers.conersionSecond}</p>
+            <p>{numbers.conversionSecond}</p>
         <Button sx={style(isOk)} onClick={onClickButton} disabled={isOk}>
           {isOk ? "Ok" : "Mehet"}
         </Button>

@@ -1,1 +1,1 @@
-export type OperationType = "+" | "-" | "*" | "/" | 'conversion';
+export type OperationType = "+" | "-" | "*" | "/" | 'conversion'|'operations';
