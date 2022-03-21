@@ -100,13 +100,19 @@ function App() {
         Osztás
       </div>
       <div
-        className={clsx("conversion", operationType === "conversion" && "active-operation")}
+        className={clsx(
+          "conversion",
+          operationType === "conversion" && "active-operation"
+        )}
         onClick={() => onClickOperation("conversion")}
       >
         Átváltás
       </div>
       <div
-        className={clsx("operations", operationType === "operations" && "active-operation")}
+        className={clsx(
+          "operations",
+          operationType === "operations" && "active-operation"
+        )}
         onClick={() => onClickOperation("operations")}
       >
         Műveleti sorrend

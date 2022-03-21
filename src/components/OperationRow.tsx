@@ -24,22 +24,21 @@ export const OperationRow = (props: OperationRowProps) => {
     setNumbers(makeRandomNumbers(operation));
   }, [operation]);
 
-  
   const handleResult = () => {
     const isSucceded = checkResult(
       numbers.resultA,
       numbers.resultB,
       parseInt(value),
-      operation as "+" | "-" | "*" | "/" 
+      operation as "+" | "-" | "*" | "/"
     );
     setIsOk(isSucceded);
     onSucceed(isSucceded, index);
   };
-  
-const onChangeInput = (e: any) => {
-  const value = e.target.value;
-  !(/[a-zA-Z]/).test(value) && setValue(e.target.value);
-};
+
+  const onChangeInput = (e: any) => {
+    const value = e.target.value;
+    !/[a-zA-Z]/.test(value) && setValue(e.target.value);
+  };
 
   const onClickButton = () => {
     handleResult();
@@ -68,13 +67,14 @@ const onChangeInput = (e: any) => {
             onChange={onChangeInput}
             onKeyDown={onKeyDownInput}
             disabled={isOk}
-            />
-          </div>
+            autoComplete="off"
+          />
+        </div>
         <Button sx={style(isOk)} onClick={onClickButton} disabled={isOk}>
           {isOk ? "Ok" : "Mehet"}
         </Button>
       </div>
-        <div className="succed-sentence">{isOk && getSucceedSentence()}</div>
+      <div className="succed-sentence">{isOk && getSucceedSentence()}</div>
     </div>
   );
 };
@@ -83,7 +83,7 @@ const style: (isSucceed: boolean) => SxProps = (isSucceed: boolean) => {
   return {
     backgroundColor: "#00008ba2",
     color: "white",
-    width:'80px',
+    width: "80px",
     "&:hover": {
       backgroundColor: "DodgerBlue",
     },

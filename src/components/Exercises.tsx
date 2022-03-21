@@ -27,7 +27,7 @@ const makeRows = (
   let rows: JSX.Element[] = [];
   for (let i = 0; i < rowsNumber; i++) {
     rows.push(
-      <div>
+      <div key={i}>
         <Row index={i} operation={operationType} onSucceed={onSucceed} />
       </div>
     );
