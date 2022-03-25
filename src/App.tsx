@@ -42,8 +42,10 @@ function App() {
 
   const onSucceed = (isSucceded: boolean, index: number) => {
     if (isSucceded) {
-      setResult((result) => getResult(result, operationType));
-      refResult.current = getResult(refResult.current, operationType);
+      setResult((result) => max1000Point(getResult(result, operationType)));
+      refResult.current = max1000Point(
+        getResult(refResult.current, operationType)
+      );
     } else {
       refFailure.current += 1;
     }
@@ -122,3 +124,7 @@ function App() {
 }
 
 export default App;
+
+const max1000Point = (result: number) => {
+  return result > 1000 ? result - 1000 : result;
+};
