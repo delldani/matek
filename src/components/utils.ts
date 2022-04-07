@@ -81,11 +81,11 @@ export const makeRandomNumbers = (operation: OperationType) => {
     resultA = getRandomNumber(1, 100);
     resultB = getRandomNumber(1, 100 - resultA);
   } else if (operation === "*") {
-    const { a, b } = getRandomMultipleNumber([2,3,4,5]);
+    const { a, b } = getRandomMultipleNumber([2,3,4,5,6,7]);
     resultA = a;
     resultB = b;
   } else if (operation === "/") {
-    const { a, b } = getDivideRandomNumber(false,[2,3,4,5]);
+    const { a, b } = getDivideRandomNumber(false,[2,3,4,5,6,7]);
     resultA = a;
     resultB = b;
   }
