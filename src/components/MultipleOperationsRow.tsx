@@ -2,9 +2,12 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { SxProps } from "@mui/system";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 
-import { getSucceedSentence, getRandomNumberForMultipleOperations } from "./utils";
+import {
+  getSucceedSentence,
+  getRandomNumberForMultipleOperations,
+} from "./utils";
 
 interface MultipleOperationsRowProps {
   index: number;
@@ -15,19 +18,19 @@ export const MultipleOperationsRow = (props: MultipleOperationsRowProps) => {
   const { index, onSucceed } = props;
   const [value, setValue] = React.useState("");
   const [isOk, setIsOk] = React.useState(false);
-  const data = React.useRef(getRandomNumberForMultipleOperations())
+  const data = React.useRef(getRandomNumberForMultipleOperations());
 
   const handleResult = () => {
     const isSucceded = value === data.current.results;
-    
+
     setIsOk(isSucceded);
     onSucceed(isSucceded, index);
   };
-  
-const onChangeInput = (e: any) => {
-  const value = e.target.value;
-  !(/[a-zA-Z]/).test(value) && setValue(e.target.value);
-};
+
+  const onChangeInput = (e: any) => {
+    const value = e.target.value;
+    !/[a-zA-Z]/.test(value) && setValue(e.target.value);
+  };
 
   const onClickButton = () => {
     handleResult();
@@ -38,7 +41,7 @@ const onChangeInput = (e: any) => {
     }
   };
   return (
-    <Box sx={style(isOk)}  key={index}>
+    <Box sx={style(isOk)} key={index}>
       <div className="multiple-operations-wrapper">
         <div className="multiple-operations-question">
           <div className="multiple-operations-numbers">
@@ -53,43 +56,44 @@ const onChangeInput = (e: any) => {
             onChange={onChangeInput}
             onKeyDown={onKeyDownInput}
             disabled={isOk}
-            />
-          </div>
+            autoComplete="off"
+          />
+        </div>
         <Button className="button" onClick={onClickButton} disabled={isOk}>
           {isOk ? "Ok" : "Mehet"}
         </Button>
       </div>
-        <div className="succed-sentence">{isOk && getSucceedSentence()}</div>
+      <div className="succed-sentence">{isOk && getSucceedSentence()}</div>
     </Box>
   );
 };
 
 const style: (isSucceed: boolean) => SxProps = (isSucceed: boolean) => {
   return {
-    display: 'flex',
-    alignItems:'center',
-    fontSize: '35px',
-    fontWeight: '500',
-    backgroundColor: 'rgba(255, 255, 255, 0.425)',
-    borderRadius: '60px',
-    marginBottom: '10px',
-    padding: '10px',
-    width:'800px',
-    '& .multiple-operations-wrapper':{
-      width:'500px',
-      display:'flex',
-      alignItems:'center',
+    display: "flex",
+    alignItems: "center",
+    fontSize: "35px",
+    fontWeight: "500",
+    backgroundColor: "rgba(255, 255, 255, 0.425)",
+    borderRadius: "60px",
+    marginBottom: "10px",
+    padding: "10px",
+    width: "800px",
+    "& .multiple-operations-wrapper": {
+      width: "500px",
+      display: "flex",
+      alignItems: "center",
     },
-    '& .multiple-operations-question':{
-      width:'380px',
-      display:'flex',
-      justifyContent:'space-around',
-      alignItems:'center',
+    "& .multiple-operations-question": {
+      width: "380px",
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "center",
     },
-    '& .button':{
+    "& .button": {
       backgroundColor: "#00008ba2",
       color: "white",
-      height:'50px',
+      height: "50px",
       "&:hover": {
         backgroundColor: "DodgerBlue",
       },
@@ -98,12 +102,11 @@ const style: (isSucceed: boolean) => SxProps = (isSucceed: boolean) => {
         color: "white",
       },
     },
-    '& .numbers':{
-      width:'950px',
+    "& .numbers": {
+      width: "950px",
     },
-  '& .multiple-operations-numbers':{
-    display: 'flex',
-  }
-  
+    "& .multiple-operations-numbers": {
+      display: "flex",
+    },
   };
 };

@@ -42,8 +42,10 @@ function App() {
 
   const onSucceed = (isSucceded: boolean, index: number) => {
     if (isSucceded) {
-      setResult((result) => getResult(result, operationType));
-      refResult.current = getResult(refResult.current, operationType);
+      setResult((result) => max1000Point(getResult(result, operationType)));
+      refResult.current = max1000Point(
+        getResult(refResult.current, operationType)
+      );
     } else {
       refFailure.current += 1;
     }
@@ -100,13 +102,19 @@ function App() {
         Osztás
       </div>
       <div
-        className={clsx("conversion", operationType === "conversion" && "active-operation")}
+        className={clsx(
+          "conversion",
+          operationType === "conversion" && "active-operation"
+        )}
         onClick={() => onClickOperation("conversion")}
       >
         Átváltás
       </div>
       <div
-        className={clsx("operations", operationType === "operations" && "active-operation")}
+        className={clsx(
+          "operations",
+          operationType === "operations" && "active-operation"
+        )}
         onClick={() => onClickOperation("operations")}
       >
         Műveleti sorrend
@@ -116,3 +124,7 @@ function App() {
 }
 
 export default App;
+
+const max1000Point = (result: number) => {
+  return result > 1000 ? result - 1000 : result;
+};
