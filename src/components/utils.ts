@@ -8,6 +8,12 @@ import {
   poolForMultipleOperations,
 } from "./defaults";
 
+/**
+ * Megadja melyik típusú feladtra mennyi pontot lehet kapni
+ * @param result
+ * @param operationType
+ * @returns
+ */
 export const getResult = (result: number, operationType: OperationType) => {
   return result + resultsAddings[operationType];
 };
@@ -24,17 +30,20 @@ export const getSucceedSentence = () => {
   return SUCCEDSENTENCES[getRandomNumber(0, SUCCEDSENTENCES.length - 1)];
 };
 
-export const getDivideRandomNumber = (fromPool: boolean = false,tables:number[]=[2]) => {
+export const getDivideRandomNumber = (
+  fromPool: boolean = false,
+  tables: number[] = [2]
+) => {
   if (fromPool) {
     return getRandomDivideNumberFromPool();
   }
-  const newTable:{a:number,b:number}[] = [];
-  tables.forEach((item)=>{
-    getMultipleTable(item).forEach((multipleItem)=>{
-      newTable.push({a:multipleItem.a * multipleItem.b,b:item })
+  const newTable: { a: number; b: number }[] = [];
+  tables.forEach((item) => {
+    getMultipleTable(item).forEach((multipleItem) => {
+      newTable.push({ a: multipleItem.a * multipleItem.b, b: item });
     });
-  })
-  return newTable[getRandomNumber(0,newTable.length-1)];
+  });
+  return newTable[getRandomNumber(0, newTable.length - 1)];
 };
 export const getRandomDivideNumberFromPool = () => {
   return poolForDivide[getRandomNumber(0, poolForDivide.length - 1)];
@@ -59,20 +68,21 @@ export const getRandomMultipleNumber = (tables: number[] = [2, 3]) => {
   });
   return allTables[getRandomNumber(0, allTables.length - 1)];
 };
-export const getRandomNumberForMultipleOperations = ()=>{
-  return  poolForMultipleOperations[getRandomNumber(0,poolForMultipleOperations.length-1)];
+export const getRandomNumberForMultipleOperations = () => {
+  return poolForMultipleOperations[
+    getRandomNumber(0, poolForMultipleOperations.length - 1)
+  ];
 };
 
 export const makeRandomNumbers = (operation: OperationType) => {
-
-  let resultA: number  = 0;
+  let resultA: number = 0;
   let resultB: number = 0;
   let resultC: number = 0;
-  let conversionFirst:string = '';
-  let conversionSecond:string='';
-  let conversionSolvation= '';
-  let operationsNumbers = '';
-  let operationsResults = '';
+  let conversionFirst: string = "";
+  let conversionSecond: string = "";
+  let conversionSolvation = "";
+  let operationsNumbers = "";
+  let operationsResults = "";
 
   if (operation === "-") {
     resultA = getRandomNumber(1, 100);
@@ -88,25 +98,33 @@ export const makeRandomNumbers = (operation: OperationType) => {
     const { a, b } = getDivideRandomNumber(false,[2,3,4,5,6,7]);
     resultA = a;
     resultB = b;
-  }
-  else if (operation === "conversion") {
-    const { first,second,solvation} = getRandomConversionFromPool();
+  } else if (operation === "conversion") {
+    const { first, second, solvation } = getRandomConversionFromPool();
     conversionFirst = first;
     conversionSecond = second;
-    conversionSolvation= solvation;
+    conversionSolvation = solvation;
   } else if (operation === "operations") {
-    const { numbers,results} = getRandomNumberForMultipleOperations();
+    const { numbers, results } = getRandomNumberForMultipleOperations();
     operationsNumbers = numbers;
     operationsResults = results;
   }
-  return { resultA, resultB,resultC,conversionFirst,conversionSecond,conversionSolvation,operationsNumbers,operationsResults };
+  return {
+    resultA,
+    resultB,
+    resultC,
+    conversionFirst,
+    conversionSecond,
+    conversionSolvation,
+    operationsNumbers,
+    operationsResults,
+  };
 };
 
 export const checkResult = (
-  a: number ,
+  a: number,
   b: number,
   result: number,
-  operation:"+" | "-" | "*" | "/" ,
+  operation: "+" | "-" | "*" | "/"
 ) => {
   switch (operation) {
     case "-":
